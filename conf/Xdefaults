@@ -1,0 +1,80 @@
+urxvt*insecure:             false
+urxvt*termName:             rxvt-unicode
+urxvt*loginShell:           true
+urxvt*hold:                 false
+urxvt*saveLines:            2048
+urxvt*matcher.button:       1
+urxvt*cursorBlink:          true
+urxvt*allow_bold:           true
+URxvt*inheritPixmap:        false
+
+!!
+! XFT settings
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+!!
+! Scroll Settings
+urxvt*jumpScroll:           true
+urxvt*skipScroll:           true
+urxvt*mouseWheelScrollPage: false
+urxvt*scrollTtyOutput:      false
+urxvt*scrollWithBuffer:     false
+urxvt*scrollTtyKeypress:    true
+urxvt*scrollBar:            false
+URxvt*scrollBar_right:      true
+URxvt*scrollColor:          #000000
+
+!!
+! Window settings
+URxvt*geometry:             120x24
+URxvt*border:               0
+urxvt.transparent:          false
+
+urxvt*tripleclickwords:     true
+urxvt*cutchars:             `'",;@&*=|?()<>[]{}
+urxvt*pastableTabs:         false
+urxvt*mapAlert:             false
+urxvt*urgentOnBell:         false
+urxvt*visualBell:           false
+urxvt*utmpInhibit:          false
+
+!!
+! Fonts
+urxvt*font:                 xft:SourceCode Pro:pixelsize=28;antialias:True
+urxvt*boldFont:             xft:SourceCode Pro:pixelsize=28:bold;antialias:True
+
+!!
+! Perl Extensions
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+URxvt.matcher.rend.0: Uline Bold fg5
+
+URxvt.perl-lib:             /usr/lib/urxvt/perl/
+
+! Colors - Monokai Two
+*background: rgb:10/10/10
+*foreground: rgb:cc/66/00
+
+*color0: rgb:10/10/10
+*color1: rgb:96/00/50
+*color2: rgb:66/aa/11
+*color3: rgb:c4/7f/2c
+*color4: rgb:30/30/9b
+*color5: rgb:7e/40/a5
+*color6: rgb:35/79/a8
+*color7: rgb:99/99/aa
+*color8: rgb:30/30/30
+*color9: rgb:ff/00/90
+*color10: rgb:80/ff/00
+*color11: rgb:ff/ba/68
+*color12: rgb:5f/5f/ee
+*color13: rgb:bb/88/dd
+*color14: rgb:4e/b4/fa
+*color15: rgb:d0/d0/d0
+
