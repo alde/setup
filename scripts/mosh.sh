@@ -2,8 +2,6 @@
 
 printf "[mosh] Setting up mosh\n"
 
-if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    sudo apt install -y mosh
-fi
+install mosh
 
 printf "[mosh] done\n"

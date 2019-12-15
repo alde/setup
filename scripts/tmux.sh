@@ -3,9 +3,7 @@
 printf "[tmux] Setting up tmux\n"
 tmuxConf="${HOME}/.tmux.conf"
 
-if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    sudo apt install -y tmux
-fi
+install tmux
 
 if [ -f "${tmuxConf}" ] ; then
     printf "[tmux] Already configured - skipping\n"

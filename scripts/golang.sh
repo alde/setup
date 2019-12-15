@@ -2,8 +2,6 @@
 
 printf "[golang] Setting up Go\n"
 
-if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    sudo apt install -y golang
-fi
+install golang
 
 printf "[golang] done\n"

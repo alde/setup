@@ -4,9 +4,7 @@ vundle="${HOME}/.vim/bundle/Vundle.vim"
 vimrc="${HOME}/.vimrc"
 printf "[vim] Setting up vim\n"
 
-if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    sudo apt install -y vim
-fi
+install vim
 
 if [ -d "${vundle}" ] ; then
     printf "[vim] vundle already installed - updating\n"

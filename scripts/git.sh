@@ -3,10 +3,7 @@
 gitConfigFile="${HOME}/.gitconfig"
 printf "[git] Setting up git\n"
 
-if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    sudo apt install -y git
-fi
-
+install git
 
 if [ -f "$gitConfigFile" ]; then
     printf "[git] $gitConfigFile already exists - skipping\n"
