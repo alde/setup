@@ -4,7 +4,7 @@ wslConfig="/etc/wsl.conf"
 wslScript="${HOME}/.bash_scripts/wsl.sh"
 
 if [ -f "${wslConfig}" ]; then
-    printf "[WSL] ${wslConfig} already configured - skipping\n"
+    notice "[WSL] ${wslConfig} already configured - skipping"
 else
     cat << EOF | sudo tee -a ${wslConfig}
     [automount]
@@ -14,7 +14,7 @@ EOF
 fi
 
 if [[ $(cat ${HOME}/.bash_profile) =~ "source ${wslScript}" ]] ; then
-    printf "[WSL] bash profile already configured - skipping\n"
+    notice "[WSL] bash profile already configured - skipping"
 else
     mkdir -p ${HOME}/.bash_scripts/
     cat << EOF > ${wslScript}
@@ -29,4 +29,4 @@ EOF
         echo "source ${wslScript}" >> "${HOME}/.bash_profile"
 fi
 
-printf "[WSL] done\n"
+info "[WSL] done"

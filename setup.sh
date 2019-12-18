@@ -1,43 +1,45 @@
 #!/usr/bin/env bash
 
-source /etc/*-release
+if [ -f /etc/os-release ] ; then
+    source /etc/os-release
+fi
+
+workdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source ${workdir}/b3bp.sh
 
 isDarwin=0
 isWSL=0
+DISTRIB_ID=""
 
 if [[ "x${DISTRIB_ID}" == "xUbuntu" ]] ; then
-    source ./installer/ubuntu.sh
-elif [[ $(uname) =~ "Darwin" ]] ; then 
+    source ${workdir}/installer/ubuntu.sh
+elif [[ $(uname) =~ "Darwin" ]] ; then
     isDarwin=1
-    source ./installer/macos.sh
+    source ${workdir}/installer/macos.sh
 else
-    printf "Unsupported distribution ${DISTRIB_ID}\n"
+    error "Unsupported distribution ${DISTRIB_ID}"
     exit 2
 fi
 
-if [[ $(uname -r) =~ "Microsoft" ]] ; then 
-    printf "[WSL] Running in Windows Subsystem for Linux\n"
+if [[ $(uname -r) =~ "Microsoft" ]] ; then
+    info "[WSL] Running in Windows Subsystem for Linux\n"
     isWSL=1
+    source ${workdir}/scripts/wsl.sh
 fi
 
-
-if [[ "x${isWSL}" == "x1" ]] ; then
-    source scripts/wsl.sh
-fi
-
-source scripts/rvm.sh
+source ${workdir}/scripts/rvm.sh
 
 if [[ "x${isDarwin}" == "x1" ]] ; then
-    source scripts/homebrew.sh
+    source ${workdir}/scripts/homebrew.sh
 fi
 
 if [[ "x${isDarwin}" == "x0" && "x${isWSL}" == "x0" ]] ; then
-    source scripts/urxvt.sh
+    source ${workdir}/scripts/urxvt.sh
 fi
 
-source scripts/oh_my_bash.sh
-source scripts/git.sh
-source scripts/mosh.sh
-source scripts/golang.sh
-source scripts/vim.sh
-source scripts/tmux.sh
+source ${workdir}/scripts/oh_my_bash.sh
+source ${workdir}/scripts/git.sh
+source ${workdir}/scripts/mosh.sh
+source ${workdir}/scripts/golang.sh
+source ${workdir}/scripts/vim.sh
+source ${workdir}/scripts/tmux.sh

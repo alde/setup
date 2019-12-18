@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
 gitConfigFile="${HOME}/.gitconfig"
-printf "[git] Setting up git\n"
-
-install git
+if [ -f $(which git) ]; then
+    notice "[git] already installed - skipping"
+else
+    info "[git] Setting up git"
+    install git
+fi
 
 if [ -f "$gitConfigFile" ]; then
-    printf "[git] $gitConfigFile already exists - skipping\n"
+    notice "[git] $gitConfigFile already exists - skipping"
 else
-    printf "[git] Creating $gitConfigFile\n"
+    notice "[git] Creating $gitConfigFile"
     printf "Username [${USER}]: "
     read userName
 
@@ -70,7 +73,7 @@ else
 
 EOF
 
-    printf "[git] $gitConfigFile written\n"
+    notice "[git] $gitConfigFile written"
 fi
 
-printf "[git] done\n"
+info "[git] done"

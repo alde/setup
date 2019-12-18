@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-printf "[mosh] Setting up mosh\n"
-
-install mosh
-
-printf "[mosh] done\n"
+if [ -f $(which mosh) ]; then
+  notice "[mosh] already installed - skipping"
+else
+  info "[mosh] Setting up mosh"
+  install mosh
+  info "[mosh] done"
+fi

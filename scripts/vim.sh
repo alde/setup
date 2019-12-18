@@ -2,24 +2,27 @@
 
 vundle="${HOME}/.vim/bundle/Vundle.vim"
 vimrc="${HOME}/.vimrc"
-printf "[vim] Setting up vim\n"
-
-install vim
+if [ -f $(which vim) ] ; then
+    notice "[vim] Already installed - skipping"
+else
+    info "[vim] Setting up vim"
+    install vim
+fi
 
 if [ -d "${vundle}" ] ; then
-    printf "[vim] vundle already installed - updating\n"
+    notice "[vim] vundle already installed - updating"
     (cd ${vundle} && git pull)
 else
-    printf "[vim] installing vundle\n"
+    notice "[vim] installing vundle"
     git clone https://github.com/VundleVim/Vundle.vim.git $vundle
 fi
 
 if [ -f "${vimrc}" ] ; then
-    printf "[vim] ${vimrc} already exists - skipping\n"
+    notice "[vim] ${vimrc} already exists - skipping"
 else
-    cat ../conf/vimrc > ${vimrc}
-    printf "[vim] installing plugins\n"
+    cat ${workdir}/conf/vimrc > ${vimrc}
+    notice "[vim] installing plugins"
     vim +PluginInstall +qall
 fi
 
-printf "[vim] done\n"
+info "[vim] done"

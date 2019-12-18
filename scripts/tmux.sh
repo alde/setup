@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-printf "[tmux] Setting up tmux\n"
 tmuxConf="${HOME}/.tmux.conf"
 
-install tmux
-
-if [ -f "${tmuxConf}" ] ; then
-    printf "[tmux] Already configured - skipping\n"
+if [ -f $(which tmux) ]; then
+    notice "[tmux] Already installed - skipping"
 else
-    printf "[tmux] Configuring tmux\n"
-    cat ../conf/tmux.conf > ${tmuxConf}
+    info "[tmux] Setting up tmux"
+    install tmux
 fi
 
-printf "[tmux] done\n"
+if [ -f "${tmuxConf}" ] ; then
+    notice "[tmux] Already configured - skipping"
+else
+    notice "[tmux] Configuring tmux"
+    cat ${workdir}/conf/tmux.conf > ${tmuxConf}
+fi
+
+info "[tmux] done"

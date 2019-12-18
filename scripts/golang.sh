@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-printf "[golang] Setting up Go\n"
-
-install golang
-
-printf "[golang] done\n"
+if [ -f $(which go) ] ; then
+  notice "[golang] already installed - skipping"
+else
+  info "[golang] Setting up Go"
+  install golang
+  info "[golang] done"
+fi

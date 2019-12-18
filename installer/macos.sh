@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-printf "[MacOS] Running setup for MacOS\n"
+info "[MacOS] Running setup for MacOS"
 install() {
     brew install $*
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-printf "[${DISTRIB_ID}] Running setup for ${DISTRIB_ID}\n"
+info "[${DISTRIB_ID}] Running setup for ${DISTRIB_ID}"
 install() {
     sudo apt install -y $*
 }

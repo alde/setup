@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
 xdefaultsConf="${HOME}/.Xdefaults"
-install rxvt-unicode
+
+if [ -f $(which urxvt) ] ; then
+    notice "[urxvt] Already installed - skipping"
+else
+    info "[urxvt] Setting up urxvt"
+    install rxvt-unicode
+fi
 
 if [ -d "${xdefaultsConf}" ] ; then
-    printf "[urxvt] Already configured - skipping\n"
+    notice "[urxvt] Already configured - skipping"
 else
-    printf "[urxvt] Setting up XDefaults for urxvt\n"
-    cat ../conf/Xdefaults > ${xdefaultsConf}
+    notice "[urxvt] Setting up XDefaults for urxvt"
+    cat ${workdir}/conf/Xdefaults > ${xdefaultsConf}
 fi
+
+info "[urxvt] done"
