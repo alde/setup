@@ -22,6 +22,7 @@ if [ -f "${vimrc}" ] ; then
 else
     cat ${workdir}/conf/vimrc > ${vimrc}
     notice "[vim] installing plugins"
+    vim +PluginClean +qall
     vim +PluginInstall +qall
 fi
 
